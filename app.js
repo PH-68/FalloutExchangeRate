@@ -1,4 +1,5 @@
 const mineflayer = require('mineflayer')
+require('dotenv').config();
 
 const bot = mineflayer.createBot({
     host: 'mcfallout.net', // minecraft server ip
@@ -29,15 +30,19 @@ bot.on('message', async (jsonMsg, position, sender, verified) => {
         flag = false
         console.warn(rate)
         var response = await (await fetch("https://api.github.com/repos/PH-68/FalloutExchangeRate/contents/rate.csv?ref=data", { method: "GET" })).json();
+        if (response.content.indexOf(rate.split(",")[0])) {
+            console.log("data already updated")
+            process.exit(1204)
+        }
         var content = `{\"message\":\"automated comment\",\"content\":\"${Buffer.from(Buffer.from(response.content, 'base64').toString() + rate + "\n").toString("base64")}\",\"sha\":\"${response.sha}\",\"branch\":\"data\"}`
-        response = await fetch("https://api.github.com/repos/PH-68/FalloutExchangeRate/contents/rate.csv?ref=data", { method: "PUT", body: content, headers: {Authorization: "Bearer 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" } });
-        console.log(await response.json())
-        return;
+        response = await fetch("https://api.github.com/repos/PH-68/FalloutExchangeRate/contents/rate.csv?ref=data", { method: "PUT", body: content, headers: { Authorization: `Bearer ${process.env.gh_pat}` } });
+        console.log(await response.status)
+        process.exit(await response.status)
     }
     if (jsonMsg.toString().includes("cepool-data-api-price")) {
         flag = true
     }
-    console.log(jsonMsg.toString())
+    //console.log(jsonMsg.toString())
 })
 
 // Log errors and kick reasons:
