@@ -1,5 +1,4 @@
 const mineflayer = require('mineflayer')
-const { app, output } = require('@azure/functions');
 require('dotenv').config();
 
 app.timer('timerTrigger1', {
