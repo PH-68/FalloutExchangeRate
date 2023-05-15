@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fallout Exchange Rate</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-dark mb-3 border-bottom text-light">
+    <div class="container-fluid container">
+      <a class="navbar-brand" href="./index.html">Fallout Exchange Rate</a>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="app" class="container">
+    <div class="card p-3 mb-3">
+      <div class="card-body">
+        <h1>
+          Fallout Exchange Rate
+        </h1>
+        <hr />
+        <div class="fs-5"><span class="fs-5">Current price: </span><span id="titleCurrentPrice"></span></div>
+      </div>
+    </div>
+    <div class="card p-3 mb-3">
+      <div class="card-body">
+        <canvas id="myChart" class="p-3"></canvas>
+        <button id="btnResetZoom" class="btn btn-success">Reset Zoom</button>
+        <button id="btnUpdateChart" class="btn btn-success">Update Chart</button>
+        <!-- <div class="btn-group">
+      <input type="date" id="minDatePicker" class="col-auto btn btn-outline-secondary" value="2023-01-01">
+      <input type="date" id="maxDatePicker" class="col-auto btn btn-outline-secondary" value="2030-01-01">
+    </div> -->
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
