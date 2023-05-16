@@ -26,10 +26,10 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@main
 
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@main
         with:
           node-version: 18
 
@@ -40,7 +40,7 @@ jobs:
         run: npm run build
 
       - name: Upload production-ready build files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@main
         with:
           name: production-files
           path: ./dist
@@ -54,14 +54,18 @@ jobs:
     if: github.ref == 'refs/heads/pages'
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@main
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@main
+        with:
+            path: './dist'
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: './dist'
+          path: './dist/production-files'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
