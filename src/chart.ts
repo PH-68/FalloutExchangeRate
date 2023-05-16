@@ -1,4 +1,4 @@
-import {Chart,Colors} from 'chart.js/auto'
+import { Chart, Colors } from 'chart.js/auto'
 import zoomPlugin from 'chartjs-plugin-zoom';
 import 'chartjs-adapter-date-fns';
 
@@ -23,8 +23,8 @@ export async function setupCanvas(canvas: HTMLCanvasElement, isInit: boolean) {
             dateTime.push(element.split(",")[0])
         };
     });
-    document.querySelector<HTMLElement>('#titleCurrentPrice')!.innerHTML = String(avgPrice[avgPrice.length - 1]);
-    console.log(dateTime);
+    document.querySelector<HTMLElement>('#titleCurrentPrice')!.innerHTML = avgPrice[avgPrice.length - 1].toLocaleString("en-US");
+    document.querySelector<HTMLElement>('#titleCurrentDate')!.innerHTML = `${dateTime[dateTime.length - 1]} (${((new Date().getTime() - new Date(dateTime[dateTime.length - 1]).getTime()) / 1000 / 60).toFixed(0)} min ago)`;
     if (isInit) {
         priceChart = new Chart(canvas, {
             type: 'line',
@@ -49,7 +49,7 @@ export async function setupCanvas(canvas: HTMLCanvasElement, isInit: boolean) {
                 }]
             },
             options: {
-                maintainAspectRatio:false,
+                maintainAspectRatio: false,
                 plugins: {
                     decimation: { enabled: true },
                     zoom: {
