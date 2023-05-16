@@ -2,6 +2,8 @@
 
 Historical data of "/ctrade data-api" command output
 
+*note that automated comments from this repo may not be signed with gpg key
+
 # LICENSE
 
 Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
