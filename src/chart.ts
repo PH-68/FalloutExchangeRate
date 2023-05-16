@@ -1,8 +1,9 @@
-import Chart from 'chart.js/auto'
+import {Chart,Colors} from 'chart.js/auto'
 import zoomPlugin from 'chartjs-plugin-zoom';
 import 'chartjs-adapter-date-fns';
 
 Chart.register(zoomPlugin);
+Chart.register(Colors);
 Chart.defaults.color = '#a7acb1';
 
 export let priceChart: Chart<"line", Number[], string>;
@@ -33,24 +34,22 @@ export async function setupCanvas(canvas: HTMLCanvasElement, isInit: boolean) {
                     label: 'Buy Price',
                     data: buyPrice,
                     fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
                     tension: 0.1
                 }, {
                     label: 'Sell Price',
                     data: sellPrice,
                     fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
                     tension: 0.1
                 },
                 {
                     label: 'Avg Price',
                     data: avgPrice,
                     fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
                     tension: 0.1
                 }]
             },
             options: {
+                maintainAspectRatio:false,
                 plugins: {
                     decimation: { enabled: true },
                     zoom: {
