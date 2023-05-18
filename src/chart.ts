@@ -9,7 +9,7 @@ Chart.defaults.color = '#a7acb1';
 export let priceChart: Chart<"line", Number[], string>;
 
 export async function setupCanvas(canvas: HTMLCanvasElement, isInit: boolean) {
-    var response = await fetch("https://raw.githubusercontent.com/PH-68/FalloutExchangeRate/data/rate.csv", { method: "GET" });
+    var response = await fetch("https://raw.githubusercontent.com/PH-68/FalloutExchangeRate/data/rate.csv?c=" + new Date().getTime(), { method: "GET" });
     let sellPrice: Number[] = [];
     let buyPrice: Number[] = [];
     let avgPrice: Number[] = [];
