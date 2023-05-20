@@ -23,12 +23,12 @@ bot.on('message', async (jsonMsg, position, sender, verified) => {
         rate = jsonMsg.toString()
         var response = await (await fetch("https://api.github.com/repos/PH-68/FalloutExchangeRate/contents/rate.csv?ref=data", { method: "GET", headers: { Authorization: `Bearer ${process.env.gh_pat}` } })).json();
         if (Buffer.from(response.content, 'base64').toString().indexOf(rate.split(",")[0]) != -1) {
-            console.log(`[${currentDateString.slice(11, 19)}]data already updated`)
+            console.log(`[${currentDateString.slice(11, 19)}]Data already updated`)
         }
         else {
             var commitMessage = `{"message":"${rate}","content":"${Buffer.from(Buffer.from(response.content, 'base64').toString() + rate + "\n").toString("base64")}","sha":"${response.sha}","branch":"data"}`
             response = await fetch("https://api.github.com/repos/PH-68/FalloutExchangeRate/contents/rate.csv?ref=data", { method: "PUT", body: commitMessage, headers: { Authorization: `Bearer ${process.env.gh_pat}` } });
-            console.log(`[${currentDateString.slice(11, 19)}]${await response.status}`)
+            console.log(`[${currentDateString.slice(11, 19)}]Updated`)
         }
         lock = false
         bot.quit()
