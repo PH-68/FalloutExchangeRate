@@ -1,9 +1,9 @@
-import { Chart, Colors, BarController, BarElement, LineController, LineElement, PointElement, LinearScale, TimeScale } from 'chart.js'
+import { Chart, Colors, BarController, BarElement, LineController, LineElement, PointElement, LinearScale, TimeScale, Tooltip } from 'chart.js'
 import zoomPlugin from 'chartjs-plugin-zoom';
 import 'chartjs-adapter-date-fns';
 import { getTransactionArray } from './transaction-log';
 
-Chart.register(zoomPlugin, Colors, BarController, BarElement, LineController, LineElement, PointElement, LinearScale, TimeScale);
+Chart.register(zoomPlugin, Colors, BarController, BarElement, LineController, LineElement, PointElement, LinearScale, TimeScale, Tooltip);
 Chart.defaults.color = '#a7acb1';
 
 export let priceChart: Chart<"line" | "bar", Number[], string>;
