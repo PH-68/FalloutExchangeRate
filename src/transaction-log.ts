@@ -65,7 +65,7 @@ export async function setupTransactionCanvas(canvas: HTMLCanvasElement, isInit: 
 }
 
 export async function getTransactionArray(filterDate: Date, filterNumber: number) {
-    var response = await fetch("https://fallout-cors.poyi.workers.dev/?c=" + new Date().getTime(), { method: "GET" });
+    var response = await fetch("https://pool-open-data.mcfallout.net/transaction-java.log?c=" + new Date().getTime(), { method: "GET" });
     const content: string = await response.text();
     let transactionLog: [number, string][] = [];
     //let transactionTime: string[] = [];
