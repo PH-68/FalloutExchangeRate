@@ -1,15 +1,14 @@
 import path from 'path';
-import { defineConfig } from 'vite'
-import sri from '@small-tech/vite-plugin-sri'
 
-export default defineConfig({
+export default {
   resolve: {
     alias: {
       '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
     }
   },
   server: {
-    port: 8080
+    port: 8080,
+    hot: true
   },
-  plugins: [sri()]
-})
+  base: "./"
+}
