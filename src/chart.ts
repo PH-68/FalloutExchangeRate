@@ -44,7 +44,7 @@ export async function setupCanvas(canvas: HTMLCanvasElement, isInit: boolean) {
                     fill: false,
                     tension: 0.1,
                     yAxisID: 'yLine',
-                    pointRadius: 0
+                    pointStyle: false
                 }, {
                     type: 'line',
                     label: 'Sell Price',
@@ -52,7 +52,7 @@ export async function setupCanvas(canvas: HTMLCanvasElement, isInit: boolean) {
                     fill: false,
                     tension: 0.1,
                     yAxisID: 'yLine',
-                    pointRadius: 0
+                    pointStyle: false
                 },
                 {
                     type: 'line',
@@ -61,7 +61,7 @@ export async function setupCanvas(canvas: HTMLCanvasElement, isInit: boolean) {
                     fill: false,
                     tension: 0.1,
                     yAxisID: 'yLine',
-                    pointRadius: 0
+                    pointStyle: false
                 }, {
                     type: 'bar',
                     label: '村民錠Diff',
