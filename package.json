@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@small-tech/vite-plugin-sri": "^1.0.1",
     "sass": "^1.62.1",
     "typescript": "^5.0.2",
     "vite": "^4.3.5"
