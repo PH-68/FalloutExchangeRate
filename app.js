@@ -16,6 +16,13 @@ bot.on('spawn', (username, message) => {
     }, 3000);
 })
 
+bot.on("health", () => {
+    if (bot.health < 20) {
+        console.log(`Low health(${bot.health})`)
+        process.exit()
+    }
+})
+
 bot.on('message', async (jsonMsg, position, sender, verified) => {
     var currentDateString = new Date(new Date().setHours(new Date().getHours() + 8)).toJSON();
     if (!lock && jsonMsg.toString().indexOf(currentDateString.slice(0, 10)) == 0) {
