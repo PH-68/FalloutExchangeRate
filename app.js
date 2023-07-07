@@ -4,7 +4,6 @@ const bot = mineflayer.createBot({
     host: 'mcfallout.net', // minecraft server ip
     username: process.env.email, // minecraft username
     auth: 'microsoft', // for offline mode servers, you can set this to 'offline'
-    version: "1.19.3",             // only set if you need a specific version or snapshot (ie: "1.8.9" or "1.16.5"), otherwise it's set automatically
 })
 
 var rate = "", lock = false
@@ -17,6 +16,8 @@ bot.on('spawn', (username, message) => {
 })
 
 bot.on('message', async (jsonMsg, position, sender, verified) => {
+    checkHealth()
+
     var currentDateString = new Date(new Date().setHours(new Date().getHours() + 8)).toJSON();
     if (!lock && jsonMsg.toString().indexOf(currentDateString.slice(0, 10)) == 0) {
         lock = true
@@ -34,6 +35,13 @@ bot.on('message', async (jsonMsg, position, sender, verified) => {
         bot.quit()
     }
 })
+
+function checkHealth() {
+    if (bot.health < 20) {
+        console.log(`Low health(${bot.health})`)
+        process.exit()
+    }
+}
 
 // Log errors and kick reasons:
 bot.on('kicked', console.log)
