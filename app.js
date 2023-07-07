@@ -15,6 +15,13 @@ bot.on('spawn', (username, message) => {
     }, 3000);
 })
 
+bot.on("health", () => {
+    if (bot.health < 20) {
+        console.log(`Low health(${bot.health})`)
+        process.exit()
+    }
+})
+
 bot.on('message', async (jsonMsg, position, sender, verified) => {
     checkHealth()
 
